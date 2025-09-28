@@ -33,6 +33,10 @@ function renderTasks() {
         <button onclick="deleteTask(${task.id})" class="px-2 py-1 text-xs bg-red-500 text-white rounded">
           Delete
         </button>
+        <button onclick="editTask(${task.id}, this.parentElement.parentElement)" class="px-2 py-1 text-xs bg-yellow-500 text-white rounded">
+  Edit
+</button>
+
       </div>
     `;
     taskList.appendChild(li);
@@ -84,3 +88,45 @@ function deleteTask(id) {
     renderTasks();
   }
 }
+// Edit Task
+function editTask(id, li) {
+  const task = tasks.find(t => t.id === id);
+  const p = li.querySelector("p");
+
+  // Create input for editing
+  const input = document.createElement("input");
+  input.type = "text";
+  input.value = task.name;
+  input.className = "border px-2 py-1 rounded w-full";
+
+  // Replace paragraph with input
+  p.replaceWith(input);
+
+  // Change Edit button to Save
+  const editBtn = li.querySelector("button:nth-child(2)");
+  editBtn.textContent = "Save";
+  editBtn.onclick = () => saveTask(id, li, input);
+}
+
+// Save edited task
+function saveTask(id, li, input) {
+  const task = tasks.find(t => t.id === id);
+  task.name = input.value;
+
+  // Restore paragraph
+  const p = document.createElement("p");
+  p.textContent = task.name;
+  p.className = task.status === "Completed" ? "line-through text-green-600" : "";
+
+  input.replaceWith(p);
+
+  // Restore Edit button
+  const editBtn = li.querySelector("button:nth-child(2)");
+  editBtn.textContent = "Edit";
+  editBtn.onclick = () => editTask(id, li);
+  
+  // Optional: re-render tasks if you want styles to refresh
+  // renderTasks();
+}
+
+  
