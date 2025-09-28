@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+  </head>
+<body class="bg-green-100 min-h-screen flex flex-col items-center p-6">
+  
+  <!-- Header -->
+  <header class="mb-6">
+    <h1 class="text-3xl font-bold text-green-700">Task Management Dashboard</h1>
+  </header>
+
+  <!-- Task Input Form -->
+  <section class="w-full max-w-md mb-6">
+    <form id="taskForm" class="flex gap-2">
+      <input 
+        type="text" 
+        id="taskName" 
+        placeholder="Task name" 
+        class="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+      <input 
+        type="date" 
+        id="taskDate" 
+        class="px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+      <button 
+        type="submit" 
+        class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+        Add
+      </button>
+    </form>
+  </section>
+
+  <!-- Task List -->
+  <section class="w-full max-w-md">
+    <ul id="taskList" class="space-y-3"></ul>
+  </section>
+
+  <!-- Connect JS file -->
+  <script src="script.js"></script>
+</body>
+</html>
+</body>
+</html>
