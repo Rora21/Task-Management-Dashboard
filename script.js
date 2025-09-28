@@ -4,7 +4,7 @@
 let tasks = [
   { id: 1, name: "Finish homework", date: "2025-10-01", status: "Pending" },
   { id: 2, name: "Go grocery shopping", date: "2025-10-02", status: "Pending" },
-  { id: 3, name: "Call mom", date: "2025-10-03", status: "Completed" },
+  { id: 3, name: "Call mom", date: "2025-10-03", status: "pending" },
   { id: 4, name: "Workout", date: "2025-10-04", status: "Pending" },
   { id: 5, name: "Read a book", date: "2025-10-05", status: "Pending" }
 ];
