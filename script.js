@@ -41,3 +41,46 @@ function renderTasks() {
 
 // Call render on page load
 renderTasks();
+// Step 3: Add new task
+document.getElementById("taskForm").addEventListener("submit", function (e) {
+  e.preventDefault(); // stop page reload
+
+  const name = document.getElementById("taskName").value.trim();
+  const date = document.getElementById("taskDate").value;
+
+  if (name === "") {
+    alert("Task name cannot be empty!");
+    return;
+  }
+
+  const newTask = {
+    id: Date.now(), // unique id
+    name: name,
+    date: date || "No due date",
+    status: "Pending"
+  };
+
+  tasks.push(newTask);
+  renderTasks();
+
+  // Clear form
+  document.getElementById("taskForm").reset();
+});
+
+// Step 4: Toggle status
+function toggleStatus(id) {
+  tasks = tasks.map(task =>
+    task.id === id
+      ? { ...task, status: task.status === "Pending" ? "Completed" : "Pending" }
+      : task
+  );
+  renderTasks();
+}
+
+// Step 5: Delete task
+function deleteTask(id) {
+  if (confirm("Are you sure you want to delete this task?")) {
+    tasks = tasks.filter(task => task.id !== id);
+    renderTasks();
+  }
+}
